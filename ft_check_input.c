@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 13:09:01 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/20 19:11:33 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/20 19:25:42 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,27 @@ int	ft_check(char *buf)
 		if (buf[i] != '.' && buf[i] != '#' && buf[i] != '\n')
 			return (1);
 	}
+	return (0);
 }
+
+t_tetri	*ft_fill_struct(char *buf)
+{
+	int i;
+	int x_ref;
+	int y_ref;
+	int ref_point;
+
+	i = 1;
+	ref_point = 0;
+	while (buf[i - 1] != 0)
+	{
+		if (buf[i - 1] == '#' && ref_point == 0)
+		{
+			x_ref = i % 5;
+			y_ref = i / 5;
+			ref_point == 1;
+		}
+
 
 int	main(int argc, char **argv)
 {
