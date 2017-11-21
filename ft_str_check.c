@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:25:39 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/21 15:46:54 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/21 16:39:31 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,9 +57,9 @@ int		ft_str_table_check(char *s, int size)
 	{
 		if (i % 5 == 4 && s[i] != '\n')
 			return (1);
-		else if (i % 21 == 20 && s[i] != '\n')
+		else if (i == 20 && s[i] != '\n')
 			return (1);
-		else if (!(i % 5 == 4 || i % 21 == 20) && s[i] == '\n')
+		else if (!(i % 5 == 4 || i == 20) && s[i] == '\n')
 			return (1);
 		if (s[i] == '#')
 			count++;
