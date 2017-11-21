@@ -6,13 +6,13 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/20 13:09:01 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/20 19:25:42 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/21 15:53:18 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_check(char *buf)
+/*int	ft_check(char *buf)
 {
 	int i;
 
@@ -24,25 +24,44 @@ int	ft_check(char *buf)
 	}
 	return (0);
 }
+*/
+void	*ft_getclean_coord(t_tetri *element)
+{
+	int j;
+
+	j = 1;
+	while (j <= 3)
+	{
+		element->coord[j][0] = element->coord[j][0] - element->coord[0][0];
+		element->coord[j][1] = element->coord[j][1] - element->coord[0][1];
+	}
+	element->coord[0][0] = 0;
+	element->coord[0][1] = 0;
+	return (element);
+}
 
 t_tetri	*ft_fill_struct(char *buf)
 {
-	int i;
-	int x_ref;
-	int y_ref;
-	int ref_point;
+	int		i;
+	int		j;
+	t_tetri	*element;
 
-	i = 1;
-	ref_point = 0;
-	while (buf[i - 1] != 0)
+	i = 0;
+	j = 0;
+	if (!(element = (t_tetri*)malloc(sizeof(t_tetri))))
+		return (0);
+	while (buf[i] != 0)
 	{
-		if (buf[i - 1] == '#' && ref_point == 0)
+		if (buf[i] == '#')
 		{
-			x_ref = i % 5;
-			y_ref = i / 5;
-			ref_point == 1;
+			element->coord[j][0] = (i % 5) - element->coord[0][0];
+			element->coord[j][1] = ((i + 1) / 5) - element->coord[0][1];
+			j++;
 		}
-
+		ft_getclean_coord(element);
+	}
+	return (element);
+}
 
 int	main(int argc, char **argv)
 {
