@@ -6,12 +6,12 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/21 16:46:15 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:14:13 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef HEADER_H
+# define HEADER_H
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -34,7 +34,6 @@ typedef struct		s_list
 	struct s_list	*next;
 }					t_list;
 
-
-int		ft_str_check(char *s);
+int					ft_str_check(char *s);
 
 #endif

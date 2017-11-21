@@ -6,36 +6,58 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:25:39 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/21 16:39:31 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/21 18:12:53 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
+#include "libft.a"
+
+int		ft_adjacent_count(char *s, int i)
+{
+	int		adjacent_count;
+
+	adjacent_count = 0;
+	if (i > 1 && s[i - 1] == '#')
+		adjacent_count++;
+	if (i > 5 && s[i - 5] == '#')
+		adjacent_count++;
+	if (i + 1 < size && s[i + 1] == '#')
+		adjacent_count++;
+	if (i + 5 < size && s[i + 5] == '#')
+		adjacent_count++;
+	return (adjacent_count);
+}
 
 /*
-** Check that no # has no adjacent #
+** Check that no # has no adjacent # and that at least 1 has 2 adjacent #
 */
 
 int		ft_str_shape_check(char *s, int size)
 {
 	int		i;
 	int		count;
+	int		flag;
+	int		adjacent_count;
 
 	i = 0;
 	count = 0;
+	flag = 0;
 	while (i < size && count < 4)
 	{
 		if (s[i] == '#')
 		{
-			if (!((i > 1 && s[i - 1] == '#') ||
-						(i > 5 && s[i - 5] == '#') ||
-						(i + 1 < size && s[i + 1] == '#') ||
-						(i + 5 < size && s[i + 5] == '#')))
+			adjacent_count = ft_adjacent_count(s, i);
+			if (adjacent_count == 0)
 				return (1);
+			if (adjacent_count > 1)
+				flag = 1;
 			count++;
 		}
 		i++;
 	}
+	if (flag != 1)
+		return (1);
 	return (0);
 }
 
