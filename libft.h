@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/21 16:46:15 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/21 19:18:39 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ typedef struct		s_list
 }					t_list;
 
 
-int		ft_str_check(char *s);
+int					ft_str_check(char *s);
+void				ft_getclean_coord(t_tetri *element);
+t_tetri				*ft_fill_struct(char *buf);
 
 #endif

@@ -1,30 +1,67 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_check_input.c                                   :+:      :+:    :+:   */
+/*   ft_fill_struct.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/20 13:09:01 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/21 16:56:53 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/21 18:52:24 by nvergnac          #+#    #+#             */
+/*   Updated: 2017/11/21 19:18:42 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-/*int	ft_check(char *buf)
+int		ft_min_width(t_tetri *element)
 {
 	int i;
+	int min;
 
+	min = 0;
 	i = 0;
-	while (buf[i] != 0)
+	while (i < 4)
 	{
-		if (buf[i] != '.' && buf[i] != '#' && buf[i] != '\n')
-			return (1);
+		if (element->coord[i][0] < min)
+			min = element->coord[i][0];
+		i++;
 	}
-	return (0);
+	return (min);
+	
 }
-*/
+
+int		ft_max_width(t_tetri *element)
+{
+	int i;
+	int max;
+
+	max = 0;
+	i = 0;
+	while (i < 4)
+	{
+		if (element->coord[i][0] > max)
+			max = element->coord[i][0];
+		i++;
+	}
+	return (max);
+
+}
+
+int		ft_max_height(t_tetri *element)
+{
+	int i;
+	int max;
+
+	max = 0;
+	i = 0;
+	while (i < 4)
+	{
+		if (element->coord[i][1] > max)
+			max = element->coord[i][1];
+		i++;
+	}
+	return (max + 1);
+}
+
 void	ft_getclean_coord(t_tetri *element)
 {
 	int j;
@@ -37,6 +74,8 @@ void	ft_getclean_coord(t_tetri *element)
 	}
 	element->coord[0][0] = 0;
 	element->coord[0][1] = 0;
+	element->heigth = ft_max_height(element);
+	element->width = (ft_max_width - ft_min_width) + 1;
 }
 
 t_tetri	*ft_fill_struct(char *buf)
@@ -63,43 +102,3 @@ t_tetri	*ft_fill_struct(char *buf)
 	return (element);
 }
 
-int	main(int argc, char **argv)
-{
-	int		fd;
-	int		ret;
-	int		ret_total;
-	char	buf[22];
-	t_tetri	*first;
-	t_tetri	*index;
-
-	//547 car 21 x 25 + 20 + 1 (verifie si le fichier ne contient pas + du max) + 1 (pour le \0)
-	if (argc != 2)
-	{
-		write(1, "fill_it target_file\n", 20);
-		return (0);
-	}
-	fd = open(argv[1], O_RDONLY);
-	while ((ret = read(fd, buf, 21)))
-	{
-		if ((ret_total = ret_total + ret) > 546)
-		{
-			write(1, "error\n", 6);
-			return (0);
-		}
-		buf[ret] = '\0';
-		if (ft_str_check(buf) == 1)
-		{
-			write(1, "error\n", 6);
-			return (0);
-		}
-		if (ret_total == 21)
-		{
-			start = ft_fill_struct(buf);
-			index = start;
-		}
-		else
-		index->next = ft_fill_struct(buf);
-		index = index->next;
-	}
-	return (0);
-}
