@@ -6,28 +6,36 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/21 19:00:38 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/21 19:47:35 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
+#include <fcntl.h>
 
-int	main(int argc, char **argv)
+
+void	ft_lst_change(int ret_total, t_tetri *first, t_tetri *index, char a, char *buf)
 {
-	int		fd;
-	int		ret;
-	int		ret_total;
+	if (ret_total == 21)
+	{
+		first = ft_fill_struct(buf, a);
+		index = first;
+	}
+	else
+		index->next = ft_fill_struct(buf, a);
+	index = index->next;
+}
+
+int	ft_treatment(int fd)
+{
+	int	ret;
+	int	ret_total;
 	char	buf[22];
 	t_tetri	*first;
 	t_tetri	*index;
+	char	a;
 
-	//547 car 21 x 25 + 20 + 1 (verifie si le fichier ne contient pas + du max) + 1 (pour le \0)
-	if (argc != 2)
-	{
-		write(1, "fill_it target_file\n", 20);
-		return (0);
-	}
-	fd = open(argv[1], O_RDONLY);
+	a = 65;
 	while ((ret = read(fd, buf, 21)))
 	{
 		if ((ret_total = ret_total + ret) > 546)
@@ -41,14 +49,21 @@ int	main(int argc, char **argv)
 			write(1, "error\n", 6);
 			return (0);
 		}
-		if (ret_total == 21)
-		{
-			start = ft_fill_struct(buf);
-			index = start;
-		}
-		else
-		index->next = ft_fill_struct(buf);
-		index = index->next;
+		ft_lst_change(ret_total, first, index, a, buf);
+		a++;
 	}
 	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	int		fd;
+
+	if (argc != 2)
+	{
+		write(1, "fill_it target_file\n", 20);
+		return (0);
+	}
+	fd = open(argv[1], O_RDONLY);
+	ft_treatment(fd);
 }

@@ -40,6 +40,7 @@ typedef struct		s_list
 
 int					ft_str_check(char *s);
 void				ft_getclean_coord(t_tetri *element);
-t_tetri				*ft_fill_struct(char *buf);
+t_tetri				*ft_fill_struct(char *buf, char a);
+int					ft_treatment(int fd);
 
 #endif
