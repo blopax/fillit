@@ -6,13 +6,13 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 18:52:24 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/21 19:18:42 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/21 19:47:13 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "header.h"
 
-int		ft_min_width(t_tetri *element)
+static int		ft_min_width(t_tetri *element)
 {
 	int i;
 	int min;
@@ -29,7 +29,7 @@ int		ft_min_width(t_tetri *element)
 	
 }
 
-int		ft_max_width(t_tetri *element)
+static int		ft_max_width(t_tetri *element)
 {
 	int i;
 	int max;
@@ -46,7 +46,7 @@ int		ft_max_width(t_tetri *element)
 
 }
 
-int		ft_max_height(t_tetri *element)
+static int		ft_max_heigth(t_tetri *element)
 {
 	int i;
 	int max;
@@ -74,11 +74,11 @@ void	ft_getclean_coord(t_tetri *element)
 	}
 	element->coord[0][0] = 0;
 	element->coord[0][1] = 0;
-	element->heigth = ft_max_height(element);
+	element->heigth = ft_max_heigth(element);
 	element->width = (ft_max_width - ft_min_width) + 1;
 }
 
-t_tetri	*ft_fill_struct(char *buf)
+t_tetri	*ft_fill_struct(char *buf, char a)
 {
 	int		i;
 	int		j;
@@ -99,6 +99,7 @@ t_tetri	*ft_fill_struct(char *buf)
 		i++;
 	}
 	ft_getclean_coord(element);
+	element->letter = a;
 	return (element);
 }
 
