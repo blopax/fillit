@@ -6,12 +6,16 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
+<<<<<<< HEAD:libft.h
 /*   Updated: 2017/11/21 19:18:39 by nvergnac         ###   ########.fr       */
+=======
+/*   Updated: 2017/11/21 18:14:13 by pclement         ###   ########.fr       */
+>>>>>>> 57da9ddf7d41e0e9f586bdae5aad74303718f88b:header.h
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef LIBFT_H
-# define LIBFT_H
+#ifndef HEADER_H
+# define HEADER_H
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -33,7 +37,6 @@ typedef struct		s_list
 	size_t			content_size;
 	struct s_list	*next;
 }					t_list;
-
 
 int					ft_str_check(char *s);
 void				ft_getclean_coord(t_tetri *element);
