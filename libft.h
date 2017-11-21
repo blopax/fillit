@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/20 17:13:18 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/21 15:53:21 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,7 @@
 typedef struct		s_tetri
 {
 	char			letter;
-	int				case_1[2];
-	int				case_2[2];
-	int				case_3[2];
-	int				case_4[2];
+	int				coord[4][2];
 	struct s_tetri	*next;
 	int				heigth;
 	int				width;
