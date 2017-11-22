@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/22 12:53:59 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 15:37:38 by pclement         ###   ########.fr       */
 /*   Updated: 2017/11/21 18:14:13 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -31,6 +31,7 @@ typedef struct		s_tetri
 int					ft_str_check(char *s);
 void				ft_getclean_coord(t_tetri *element);
 t_tetri				*ft_fill_struct(char *buf, char a);
-int					ft_treatment(int fd);
-
+t_tetri				*ft_treatment(int fd);
+int					ft_int_strlen(char *s);
 #endif
+

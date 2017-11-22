@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 18:52:24 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/22 12:26:39 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 15:17:05 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,14 +69,15 @@ void		ft_getclean_coord(t_tetri *element)
 	{
 		element->coord[j][0] = element->coord[j][0] - element->coord[0][0];
 		element->coord[j][1] = element->coord[j][1] - element->coord[0][1];
+		j++;
 	}
 	element->coord[0][0] = 0;
 	element->coord[0][1] = 0;
 	element->heigth = ft_max_heigth(element);
-	element->width = (ft_max_width - ft_min_width) + 1;
+	element->width = (ft_max_width(element) - ft_min_width(element)) + 1;
 }
 
-t_tetri		*ft_fill_struct(char *buf, char a)
+t_tetri		*ft_fill_struct(char *buf, char letter)
 {
 	int		i;
 	int		j;
@@ -97,6 +98,7 @@ t_tetri		*ft_fill_struct(char *buf, char a)
 		i++;
 	}
 	ft_getclean_coord(element);
-	element->letter = a;
+	element->letter = letter;
+	element->next = NULL;
 	return (element);
 }

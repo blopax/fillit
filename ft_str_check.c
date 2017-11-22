@@ -6,29 +6,17 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:25:39 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/22 13:02:36 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 14:40:24 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include "libft/libft.h"
 
-static int	ft_int_strlen(char *s)
-{
-	int		len;
-
-	len = 0;
-	while (s[len])
-		len++;
-	return (len);
-}
-
-static int	ft_adjacent_count(char *s, int size)
+static int	ft_adjacent_count(char *s, int i, int size)
 {
 	int		adjacent_count;
-	int		i;
 
-	i = 0;
 	adjacent_count = 0;
 	if (i > 1 && s[i - 1] == '#')
 		adjacent_count++;
@@ -42,7 +30,7 @@ static int	ft_adjacent_count(char *s, int size)
 }
 
 /*
-** Check that no # has no adjacent # and that at least 1 has 2 adjacent #
+ ** Check that no # has no adjacent # and that at least 1 has 2 adjacent #
 */
 
 static int	ft_str_shape_check(char *s, int size)
@@ -55,20 +43,20 @@ static int	ft_str_shape_check(char *s, int size)
 	i = 0;
 	count = 0;
 	flag = 0;
+	adjacent_count = 0;
 	while (i < size && count < 4)
 	{
 		if (s[i] == '#')
 		{
-			adjacent_count = ft_adjacent_count(s, i);
-			if (adjacent_count == 0)
-				return (1);
+			if (ft_adjacent_count(s, i, size) > 0)
+				adjacent_count++;
 			if (adjacent_count > 1)
 				flag = 1;
 			count++;
 		}
 		i++;
 	}
-	if (flag != 1)
+	if (flag != 1 || adjacent_count != 4)
 		return (1);
 	return (0);
 }
@@ -84,7 +72,9 @@ static int	ft_str_table_check(char *s, int size)
 	int		count;
 
 	if (size != 20 && size != 21)
+	{
 		return (1);
+	}
 	i = 0;
 	count = 0;
 	while (i < size)
@@ -120,7 +110,7 @@ static int	ft_str_char_check(char *s)
 ** Doesn't check number of tetrominos
 */
 
-int		ft_str_check(char *s)
+int			ft_str_check(char *s)
 {
 	if (ft_str_table_check(s, ft_int_strlen(s)))
 		return (1);
