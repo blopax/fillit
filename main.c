@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/22 15:37:42 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 17:51:58 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ t_tetri		*ft_treatment(int fd)
 		if (letter > 'Z' || ft_str_check(buf) == 1)
 		{
 			write(1, "error\n", 6);
-			return (1);
+			return (0);
 		}
 		index = ft_fill_struct(buf, letter);
 /*
