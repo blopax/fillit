@@ -6,17 +6,29 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:25:39 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/21 18:12:53 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 13:02:36 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include "libft.a"
+#include "libft/libft.h"
 
-int		ft_adjacent_count(char *s, int i)
+static int	ft_int_strlen(char *s)
+{
+	int		len;
+
+	len = 0;
+	while (s[len])
+		len++;
+	return (len);
+}
+
+static int	ft_adjacent_count(char *s, int size)
 {
 	int		adjacent_count;
+	int		i;
 
+	i = 0;
 	adjacent_count = 0;
 	if (i > 1 && s[i - 1] == '#')
 		adjacent_count++;
@@ -33,7 +45,7 @@ int		ft_adjacent_count(char *s, int i)
 ** Check that no # has no adjacent # and that at least 1 has 2 adjacent #
 */
 
-int		ft_str_shape_check(char *s, int size)
+static int	ft_str_shape_check(char *s, int size)
 {
 	int		i;
 	int		count;
@@ -66,7 +78,7 @@ int		ft_str_shape_check(char *s, int size)
 ** tetromino + check that 4# (shape checked in other function)
 */
 
-int		ft_str_table_check(char *s, int size)
+static int	ft_str_table_check(char *s, int size)
 {
 	int		i;
 	int		count;
@@ -92,7 +104,7 @@ int		ft_str_table_check(char *s, int size)
 	return (0);
 }
 
-int		ft_str_char_check(char *s)
+static int	ft_str_char_check(char *s)
 {
 	while (*s)
 	{
@@ -110,11 +122,11 @@ int		ft_str_char_check(char *s)
 
 int		ft_str_check(char *s)
 {
-	if (ft_str_table_check(s, ft_strlen(s)))
+	if (ft_str_table_check(s, ft_int_strlen(s)))
 		return (1);
 	if (ft_str_char_check(s))
 		return (1);
-	if (ft_str_shape_check(s, ft_strlen(s)))
+	if (ft_str_shape_check(s, ft_int_strlen(s)))
 		return (1);
 	else
 		return (0);

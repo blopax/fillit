@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/21 20:07:40 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 12:53:59 by pclement         ###   ########.fr       */
 /*   Updated: 2017/11/21 18:14:13 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -27,13 +27,6 @@ typedef struct		s_tetri
 	int				opt_pos[2];
 	int				test_pos[2];
 }					t_tetri;
-
-typedef struct		s_list
-{
-	void			*content;
-	size_t			content_size;
-	struct s_list	*next;
-}					t_list;
 
 int					ft_str_check(char *s);
 void				ft_getclean_coord(t_tetri *element);
