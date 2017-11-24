@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/24 13:23:16 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 17:51:58 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,3 +72,6 @@ int	main(int argc, char **argv)
 	ft_solver(first);
 	return (0);
 }
+/*
+** a mon avis renvoie tetr* lst qu'on doit imprimer apres
+*/

@@ -6,13 +6,13 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 14:40:11 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 13:25:54 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 17:55:35 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 
-int		ft_int_strlen(char *s)
+int	ft_int_strlen(char *s)
 {
 	int		len;
 

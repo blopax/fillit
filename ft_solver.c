@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:40:59 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 13:28:21 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/22 20:07:37 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	ft_fill_info_struct(t_tetri *first)
 	return (i);
 }
 
-/*int		ft_init_max_square(t_tetri *first)
+int		ft_init_max_square(t_tetri *first)
 {
 	t_tetri	*position;
 	int		max_square;
@@ -40,13 +40,13 @@ int	ft_fill_info_struct(t_tetri *first)
 		position = position->next;
 	}
 	return (max_square);
-}*/
+}
 
 int		ft_min_square(t_info info)
 {
 	int nb;
 
-	nb = 2;
+	nb = 1;
 	while (nb * nb < (info.nb_tetri * 4))
 		nb++;
 	return (nb);
@@ -144,7 +144,7 @@ void	ft_solver(t_tetri *first)
 	t_info info;
 
 	info.nb_tetri = ft_fill_info_struct(first);
-//	info.max_square = ft_max(ft_init_max_square(first), 4);
+	info.max_square = ft_max(ft_init_max_square(first), 4);
 	info.min_square = ft_min_square(info);
 	info.tab = ft_redim_info_table(info);
 	printf("nb_tetri :\t%d\tmin_square :\t%d\tmax_square :\t%d\n",info.nb_tetri,info.min_square,info.max_square);
