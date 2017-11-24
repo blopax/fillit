@@ -6,11 +6,11 @@
 #    By: pclement <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/11/13 18:57:53 by pclement          #+#    #+#              #
-#    Updated: 2017/11/24 17:15:57 by nvergnac         ###   ########.fr        #
+#    Updated: 2017/11/24 17:26:56 by nvergnac         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = fill_it
+NAME = fillit
 
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror
@@ -26,7 +26,7 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 CPPFLAGS = -I.
 #*. peut etre remplace par include ou le nom du dossier ou se trouvent les #include *
 
-LDFLAGS = -Llibft
+LDFLAGS = -L
 # *dossier de la lib*
 LDLIBS = -lft
 #*nom librairie par exp lft pour libft*
@@ -34,7 +34,7 @@ LDLIBS = -lft
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(LDFLAGS) $(LDLIBS) $^ -o $@
+	$(CC) $^ -o $@
 
 $(OBJ_PATH)%.o: $(SRC_PATH)%.c
 	@mkdir (OBJ_PATH) 2> /dev/null || true
