@@ -6,13 +6,12 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:40:59 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 17:03:04 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/24 17:21:16 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include "libft/libft.h"
-#include <stdio.h>
 
 int		ft_fill_size_tab(t_info info, t_tetri *first, int i)
 {
@@ -21,25 +20,25 @@ int		ft_fill_size_tab(t_info info, t_tetri *first, int i)
 
 	while (first->letter != 'A' + i)
 		first = first->next;
-//	printf("nb_tetri :\t%d\tmin_square :\t%d\n",info.nb_tetri,info.min_square);
-//	printf("first->heigth :\t%d\tfirst->width :\t%d\n\n",first->heigth,first->width);
+	//	printf("nb_tetri :\t%d\tmin_square :\t%d\n",info.nb_tetri,info.min_square);
+	//	printf("first->heigth :\t%d\tfirst->width :\t%d\n\n",first->heigth,first->width);
 	y = 0;
 	while (y < info.min_square)
 	{
 		x = 0;
 		if (y + first->max_y < info.min_square)
 		{
-		while (x < info.min_square)
-		{
-			if (info.tab[y][x] == '.' && x + first->min_x >= 0 && x + first->max_x < info.min_square)
+			while (x < info.min_square)
 			{
-				if (ft_put_tetri(info, first, y, x) == 1)
+				if (info.tab[y][x] == '.' && x + first->min_x >= 0 && x + first->max_x < info.min_square)
 				{
-					return (1);
+					if (ft_put_tetri(info, first, y, x) == 1)
+					{
+						return (1);
+					}
 				}
+				x++;
 			}
-			x++;
-		}
 		}
 		y++;
 	}
@@ -58,36 +57,36 @@ int		ft_size_solver(t_info info, t_tetri *first)
 	while (i < info.nb_tetri)
 	{
 		k = 0;
-/*		while (k < info.nb_tetri)
-		{
-			write(1, &(info.free_tetri[k]),1);
-			write(1, "\n",1);
-			write(1, "\n",1);
-			k++;
-		}*/
+		/*		while (k < info.nb_tetri)
+				{
+				write(1, &(info.free_tetri[k]),1);
+				write(1, "\n",1);
+				write(1, "\n",1);
+				k++;
+				}*/
 		if (info.free_tetri[i] == '.')
 		{
 			if (ft_fill_size_tab(info, first, i) == 0)
 				return (0);
 			j = 0;
-/*			while (j < info.min_square)
-			{
-				write(1,info.tab[j],info.min_square);
-				write(1,"\n", 1);
-				j++;
-			}
-			write(1,"\n", 1);*/
+			/*			while (j < info.min_square)
+						{
+						write(1,info.tab[j],info.min_square);
+						write(1,"\n", 1);
+						j++;
+						}
+						write(1,"\n", 1);*/
 			info.free_tetri[i] = 'A' + i;
 			if (ft_size_solver(info, first) == 1)
 				return (1);
 			ft_remove_tetr_from_table(info, i);
 			j = 0;
-/*			while (j < info.min_square)
-			{
-				write(1,info.tab[j],info.min_square);
-				write(1,"\n", 1);
-				j++;
-			}*/
+			/*			while (j < info.min_square)
+						{
+						write(1,info.tab[j],info.min_square);
+						write(1,"\n", 1);
+						j++;
+						}*/
 			info.free_tetri[i] = '.';
 		}
 		i++;
@@ -110,32 +109,6 @@ char	*ft_init_free_tetri(t_info info)
 	return (info.free_tetri);
 }
 
-void	ft_write_solution(t_info info)
-{
-	int		i;
-
-	i = 0;
-	while (i < info.min_square)
-	{
-		write(1, info.tab[i], info.min_square);
-		write(1, "\n", 1);
-		i++;
-	}
-}
-
-void	ft_free_tab(t_info info)
-{
-	int i;
-
-	i = 0;
-	while (i < info.min_square - 1)
-	{
-		free(info.tab[i]);
-		i++;
-	}
-	free(info.tab);
-	free(info.free_tetri);
-}
 
 int		ft_solver(t_tetri *first)
 {
