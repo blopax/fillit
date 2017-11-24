@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/24 13:59:22 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 16:09:31 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ t_tetri		*ft_treatment(int fd)
 		index = index->next;
 		letter++;
 	}
+//	free(index);
 	return (first);
 }
 
@@ -70,5 +71,8 @@ int			main(int argc, char **argv)
 	fd = open(argv[1], O_RDONLY);
 	first = ft_treatment(fd);
 	ft_solver(first);
+//	free(first);
+	close(fd);
+	sleep(1000000);
 	return (0);
 }

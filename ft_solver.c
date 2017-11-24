@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:40:59 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 15:24:52 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 17:03:04 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,20 @@ void	ft_write_solution(t_info info)
 	}
 }
 
+void	ft_free_tab(t_info info)
+{
+	int i;
+
+	i = 0;
+	while (i < info.min_square - 1)
+	{
+		free(info.tab[i]);
+		i++;
+	}
+	free(info.tab);
+	free(info.free_tetri);
+}
+
 int		ft_solver(t_tetri *first)
 {
 	t_info	info;
@@ -141,11 +155,9 @@ int		ft_solver(t_tetri *first)
 			flag = 1;
 		info.min_square = (info.min_square) + 1;
 		if (flag == 0)
-		{
-			free(info.free_tetri);
-			free(info.tab);
-		}
+			ft_free_tab(info);
 	}
 	ft_write_solution(info);
+	ft_free_tab(info);
 	return (1);
 }
