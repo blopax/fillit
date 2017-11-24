@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/23 19:19:13 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/24 13:59:22 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <fcntl.h>
 #include <stdio.h>
 
-void	ft_get_next_lst(t_tetri *first, t_tetri *index, char letter)
+void		ft_get_next_lst(t_tetri *first, t_tetri *index, char letter)
 {
 	if (letter != 'A')
 	{
@@ -57,7 +57,7 @@ t_tetri		*ft_treatment(int fd)
 	return (first);
 }
 
-int	main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
 	int		fd;
 	t_tetri *first;
@@ -72,6 +72,3 @@ int	main(int argc, char **argv)
 	ft_solver(first);
 	return (0);
 }
-/*
-** a mon avis renvoie tetr* lst qu'on doit imprimer apres
-*/

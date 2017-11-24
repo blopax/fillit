@@ -1,13 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   libft.h                                            :+:      :+:    :+:   */
+/*   header.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/23 17:03:20 by nvergnac         ###   ########.fr       */
-/*   Updated: 2017/11/21 18:14:13 by pclement         ###   ########.fr       */
+/*   Created: 2017/11/24 13:57:36 by pclement          #+#    #+#             */
+/*   Updated: 2017/11/24 13:57:54 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +33,15 @@ typedef struct		s_tetri
 	int				width;
 }					t_tetri;
 
-
 int					ft_str_check(char *s);
 void				ft_getclean_coord(t_tetri *element);
 t_tetri				*ft_fill_struct(char *buf, char a);
 t_tetri				*ft_treatment(int fd);
-int				ft_solver(t_tetri *lst);
+int					ft_solver(t_tetri *lst);
 int					ft_int_strlen(char *s);
+char				**ft_redim_info_table(t_info info);
+int					ft_no_zero_in_tab(t_info info);
+void				ft_remove_tetr_from_table(t_info info, int i);
+int					ft_nb_tetri(t_tetri *first);
+int					ft_min_square(t_info info);
 #endif
-
