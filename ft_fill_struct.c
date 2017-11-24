@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 18:52:24 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/22 15:17:05 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 15:01:41 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static int	ft_max_heigth(t_tetri *element)
 			max = element->coord[i][1];
 		i++;
 	}
-	return (max + 1);
+	return (max);
 }
 
 void		ft_getclean_coord(t_tetri *element)
@@ -73,8 +73,9 @@ void		ft_getclean_coord(t_tetri *element)
 	}
 	element->coord[0][0] = 0;
 	element->coord[0][1] = 0;
-	element->heigth = ft_max_heigth(element);
-	element->width = (ft_max_width(element) - ft_min_width(element)) + 1;
+	element->max_y = ft_max_heigth(element);
+	element->min_x = (ft_min_width(element));
+	element->max_x = (ft_max_width(element));
 }
 
 t_tetri		*ft_fill_struct(char *buf, char letter)

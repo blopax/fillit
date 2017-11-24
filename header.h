@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:57:36 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 13:57:54 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 15:01:27 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ typedef struct		s_tetri
 	char			letter;
 	int				coord[4][2];
 	struct s_tetri	*next;
-	int				heigth;
-	int				width;
+	int				max_y;
+	int				min_x;
+	int				max_x;
 }					t_tetri;
 
 int					ft_str_check(char *s);
