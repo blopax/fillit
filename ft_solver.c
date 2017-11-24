@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:40:59 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 14:17:23 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 14:56:09 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,9 +81,7 @@ int		ft_size_solver(t_info info, t_tetri *first)
 	int		k;
 
 	if (ft_no_zero_in_tab(info) == 0)
-	{
 		return (1);
-	}
 	i = 0 % info.nb_tetri;
 	while (i < info.nb_tetri)
 	{
@@ -140,6 +138,20 @@ char	*ft_init_free_tetri(t_info info)
 	return (info.free_tetri);
 }
 
+void	ft_write_solution(t_info info)
+{
+	int		i;
+
+	i = 0;
+
+	while (i < info.min_square)
+	{
+		write(1, info.tab[i], info.min_square);
+		write(1, "\n", 1);
+		i++;
+	}
+}
+
 int		ft_solver(t_tetri *first)
 {
 	t_info	info;
@@ -163,12 +175,6 @@ int		ft_solver(t_tetri *first)
 			free(info.tab);
 		}
 	}
-	flag = 0;
-	while (flag < info.min_square)
-	{
-		write(1, info.tab[flag], info.min_square);
-		write(1, "\n", 1);
-		flag++;
-	}
+	ft_write_solution(info);
 	return (1);
 }
