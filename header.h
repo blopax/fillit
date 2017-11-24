@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/08 16:45:11 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/22 17:50:04 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 13:28:08 by pclement         ###   ########.fr       */
 /*   Updated: 2017/11/21 18:14:13 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
@@ -32,8 +32,8 @@ typedef struct		s_tetri
 	struct s_tetri	*next;
 	int				heigth;
 	int				width;
-	int				opt_pos[2];
-	int				test_pos[2];
+/*	int				opt_pos[2];
+	int				test_pos[2];*/
 }					t_tetri;
 
 
