@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:57:36 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 13:57:54 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/24 15:24:58 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,4 +44,5 @@ int					ft_no_zero_in_tab(t_info info);
 void				ft_remove_tetr_from_table(t_info info, int i);
 int					ft_nb_tetri(t_tetri *first);
 int					ft_min_square(t_info info);
+int					ft_put_tetri(t_info info, t_tetri *position, int y, int x);
 #endif
