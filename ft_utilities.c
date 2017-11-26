@@ -22,22 +22,6 @@ int		ft_int_strlen(char *s)
 	return (len);
 }
 
-int		ft_min(int a, int b)
-{
-	if (a <= b)
-		return (a);
-	else
-		return (b);
-}
-
-int		ft_max(int a, int b)
-{
-	if (a >= b)
-		return (a);
-	else
-		return (b);
-}
-
 int		ft_nb_tetri(t_tetri *first)
 {
 	int i;

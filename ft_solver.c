@@ -85,7 +85,7 @@ int		ft_size_solver(t_info info, t_tetri *first)
 
 	if (ft_no_zero_in_tab(info) == 0)
 		return (1);
-	i = 0 % info.nb_tetri;
+	i = 0;
 	while (i < info.nb_tetri)
 	{
 		k = 0;
@@ -130,7 +130,7 @@ int		ft_size_solver(t_info info, t_tetri *first)
 			  write(1,"\n", 1);*/
 			if (info.nb_tetri <= 7)
 			{
-				write(1,"TEST\n", 5);
+				//write(1,"TEST\n", 5);
 				if (ft_fill_size_tab_rev(info, first, i) == 0)
 					return (0);
 				info.free_tetri[i] = 'A' + i;
@@ -168,7 +168,7 @@ int		ft_solver(t_tetri *first)
 
 	info.nb_tetri = ft_nb_tetri(first);
 	info.min_square = ft_min_square(info);
-	printf("nb_tetri :\t%d\tmin_square :\t%d\n",info.nb_tetri,info.min_square);
+	//printf("nb_tetri :\t%d\tmin_square :\t%d\n",info.nb_tetri,info.min_square);
 	flag = 0;
 	while (flag == 0)
 	{

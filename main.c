@@ -19,6 +19,7 @@ void	ft_write_solution(t_info info)
 	int		i;
 
 	i = 0;
+	info.min_square--;
 	while (i < info.min_square)
 	{
 		write(1, info.tab[i], info.min_square);
@@ -60,7 +61,8 @@ t_tetri		*ft_treatment(int fd)
 	char	letter;
 
 	letter = 'A';
-	while ((ret = read(fd, buf, 21)))
+	buf[20] = 'x';
+	while ((ret = read(fd, buf, 21)) && letter <= 'Z')
 	{
 		buf[ret] = '\0';
 		if (letter > 'Z' || ft_str_check(buf) == 1)
@@ -75,8 +77,15 @@ t_tetri		*ft_treatment(int fd)
 		index = index->next;
 		letter++;
 	}
+	if (buf[20] != 0 || letter > 'Z')
+	{
+		write(1, "error\n", 6);
+		return (0);
+	}
 	return (first);
 }
+// pour gagner lignes ou on envoie buf 22 initialise de facon a ce que buf 20 different de 0 et letter = A 
+// et on peut remplacer le dernier if return par une fonction et a la fin on return la fonction qui renvoie first ou 0 en ecrivant
 
 int			main(int argc, char **argv)
 {
@@ -90,7 +99,8 @@ int			main(int argc, char **argv)
 	}
 	fd = open(argv[1], O_RDONLY);
 	first = ft_treatment(fd);
-	ft_solver(first);
+	if (first)
+		ft_solver(first);
 	close(fd);
 	return (0);
 }

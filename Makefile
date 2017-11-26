@@ -26,11 +26,6 @@ OBJ = $(addprefix $(OBJ_PATH)/,$(OBJ_NAME))
 CPPFLAGS = -I.
 #*. peut etre remplace par include ou le nom du dossier ou se trouvent les #include *
 
-LDFLAGS = -L
-# *dossier de la lib*
-LDLIBS = -lft
-#*nom librairie par exp lft pour libft*
-
 all: $(NAME)
 
 $(NAME): $(OBJ)

@@ -50,7 +50,7 @@ static int	ft_str_shape_check(char *s, int size)
 		{
 			if (ft_adjacent_count(s, i, size) > 0)
 				adjacent_count++;
-			if (adjacent_count > 1)
+			if (ft_adjacent_count(s, i, size) > 1)
 				flag = 1;
 			count++;
 		}
@@ -109,7 +109,6 @@ static int	ft_str_char_check(char *s)
 ** Check if ONE tetromino (given as a str)  is valid (no matter first or last)
 ** Doesn't check number of tetrominos
 */
-
 int			ft_str_check(char *s)
 {
 	if (ft_str_table_check(s, ft_int_strlen(s)))
