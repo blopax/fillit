@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:47:34 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 14:58:53 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:39:28 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,21 +35,7 @@ char	**ft_redim_info_table(t_info info)
 	return (info.tab);
 }
 
-int		ft_no_zero_in_tab(t_info info)
-{
-	int		i;
-
-	i = 0;
-	while (i < info.nb_tetri)
-	{
-		if (info.free_tetri[i] == '.')
-			return (1);
-		i++;
-	}
-	return (0);
-}
-
-void	ft_remove_tetr_from_table(t_info info, t_tetri *first, char letter, int k)
+void	ft_remove_tetr_from_table(t_info info, t_tetri *first, char alfa, int k)
 {
 	int		x;
 	int		y;
@@ -59,7 +45,7 @@ void	ft_remove_tetr_from_table(t_info info, t_tetri *first, char letter, int k)
 
 	y = k / info.min_square;
 	x = k % info.min_square;
-	while (first->letter != letter)
+	while (first->letter != alfa)
 		first = first->next;
 	case_index = 0;
 	while (case_index <= 3)

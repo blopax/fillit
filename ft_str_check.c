@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:25:39 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/22 14:40:24 by pclement         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:39:57 by pclement         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,7 @@ static int	ft_str_char_check(char *s)
 ** Check if ONE tetromino (given as a str)  is valid (no matter first or last)
 ** Doesn't check number of tetrominos
 */
+
 int			ft_str_check(char *s)
 {
 	if (ft_str_table_check(s, ft_int_strlen(s)))
