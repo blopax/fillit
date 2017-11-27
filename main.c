@@ -6,15 +6,14 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/24 17:18:23 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:26:16 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
 #include <fcntl.h>
-#include <stdio.h>
 
-void	ft_write_solution(t_info info)
+void		ft_write_solution(t_info info)
 {
 	int		i;
 
@@ -28,20 +27,6 @@ void	ft_write_solution(t_info info)
 	}
 }
 
-void	ft_free_tab(t_info info)
-{
-	int i;
-
-	i = 0;
-	while (i < info.min_square - 1)
-	{
-		free(info.tab[i]);
-		i++;
-	}
-	free(info.tab);
-	free(info.free_tetri);
-}
-
 void		ft_get_next_lst(t_tetri *first, t_tetri *index, char letter)
 {
 	if (letter != 'A')
@@ -50,6 +35,12 @@ void		ft_get_next_lst(t_tetri *first, t_tetri *index, char letter)
 			first = first->next;
 		first->next = index;
 	}
+}
+
+int			ft_write_error(void)
+{
+	write(1, "error\n", 6);
+	return (0);
 }
 
 t_tetri		*ft_treatment(int fd)
@@ -66,10 +57,7 @@ t_tetri		*ft_treatment(int fd)
 	{
 		buf[ret] = '\0';
 		if (letter > 'Z' || ft_str_check(buf) == 1)
-		{
-			write(1, "error\n", 6);
-			return (0);
-		}
+			ft_write_error();
 		index = ft_fill_struct(buf, letter);
 		if (letter == 'A')
 			first = index;
@@ -78,14 +66,9 @@ t_tetri		*ft_treatment(int fd)
 		letter++;
 	}
 	if (buf[20] != 0 || letter > 'Z')
-	{
-		write(1, "error\n", 6);
-		return (0);
-	}
+		ft_write_error();
 	return (first);
 }
-// pour gagner lignes ou on envoie buf 22 initialise de facon a ce que buf 20 different de 0 et letter = A 
-// et on peut remplacer le dernier if return par une fonction et a la fin on return la fonction qui renvoie first ou 0 en ecrivant
 
 int			main(int argc, char **argv)
 {

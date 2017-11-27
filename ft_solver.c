@@ -6,37 +6,52 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:40:59 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 19:57:50 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:30:47 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "header.h"
-#include <stdio.h>
+
+void	ft_free_tab(t_info info)
+{
+	int i;
+
+	i = 0;
+	while (i < info.min_square - 1)
+	{
+		free(info.tab[i]);
+		i++;
+	}
+	free(info.tab);
+}
+
+t_tetri	ft_getnext_letter(t_tetri *first, char letter)
+{
+	while (first->letter != letter)
+		first = first->next;
+	return (*first);
+}
 
 int		ft_fill_size_tab(t_info info, t_tetri *first, char letter, int k)
 {
 	int		y;
 	int		x;
 
-	while (first->letter != letter)
-		first = first->next;
+	*first = ft_getnext_letter(first, letter);
 	y = k / info.min_square;
 	while (y < info.min_square)
 	{
 		if (y + first->max_y < info.min_square)
 		{
 			x = 0;
-			if (y == k/ info.min_square)
+			if (y == k / info.min_square)
 				x = k % info.min_square;
 			while (x < info.min_square)
 			{
-				if (info.tab[y][x] == '.' && x + first->min_x >= 0 && x + first->max_x < info.min_square)
+				if (IT[y][x] == '.' && x + FMin >= 0 && x + FMax < ITM)
 				{
 					if (ft_put_tetri(info, first, y, x) == 1)
-					{
-						k = y * info.min_square + x;
-						return (k);
-					}
+						return (y * info.min_square + x);
 				}
 				x++;
 			}
@@ -50,7 +65,7 @@ int		ft_size_solver(t_info info, t_tetri *first, char letter, int k)
 {
 	int		j;
 
-	if (letter - 'A'  == info.nb_tetri)
+	if (letter - 'A' == info.nb_tetri)
 		return (1);
 	if (k < info.min_square * info.min_square)
 	{
@@ -67,22 +82,6 @@ int		ft_size_solver(t_info info, t_tetri *first, char letter, int k)
 	return (0);
 }
 
-char	*ft_init_free_tetri(t_info info)
-{
-	int		i;
-
-	i = 0;
-	if (!(info.free_tetri = (char*)malloc(sizeof(char) * info.nb_tetri)))
-		return (0);
-	while (i < info.nb_tetri)
-	{
-		info.free_tetri[i] = '.';
-		i++;
-	}
-	return (info.free_tetri);
-}
-
-
 int		ft_solver(t_tetri *first)
 {
 	t_info	info;
@@ -94,8 +93,6 @@ int		ft_solver(t_tetri *first)
 	while (flag == 0)
 	{
 		info.tab = ft_redim_info_table(info);
-		if ((info.free_tetri = ft_init_free_tetri(info)) == 0)
-			return (0);
 		if ((ft_size_solver(info, first, 'A', 0)) == 1)
 			flag = 1;
 		info.min_square = (info.min_square) + 1;

@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:57:36 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/24 17:20:41 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:30:49 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,16 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# define IT info.tab
+# define ITM info.min_square
+# define FMin first->min_x
+# define FMax first->max_x
 
 typedef struct		s_info
 {
 	int				nb_tetri;
 	int				min_square;
 	char			**tab;
-	char			*free_tetri;
 }					t_info;
 
 typedef struct		s_tetri
