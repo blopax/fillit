@@ -16,7 +16,7 @@ CC = gcc
 CFLAGS = -Wall -Wextra -Werror
 
 SRC_PATH = .
-SRC_NAME = $(wildcard *.c)
+SRC_NAME = main.c ft_solver_pablo.c ft_backtracking_utilities.c ft_utilities.c ft_str_check.c ft_fill_struct.c
 SRC = $(addprefix $(SRC_PATH)/,$(SRC_NAME))
 
 OBJ_PATH = .

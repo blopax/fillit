@@ -49,23 +49,41 @@ int		ft_no_zero_in_tab(t_info info)
 	return (0);
 }
 
-void	ft_remove_tetr_from_table(t_info info, int i)
+void	ft_remove_tetr_from_table(t_info info, char letter)
 {
 	int		j;
 	int		k;
+//	int		i;
 
+//i = 0;
+//	while (i < info.min_square)
+//			{
+//				write(1,info.tab[i],info.min_square);
+//				write(1,"\n", 1);
+//				i++;
+//			}
+//	write(1,"\n", 1);
 	j = 0;
 	while (j < info.min_square)
 	{
 		k = 0;
 		while (k < info.min_square)
 		{
-			if (info.tab[j][k] == 'A' + i)
+			if (info.tab[j][k] == letter)
 				info.tab[j][k] = '.';
 			k++;
 		}
 		j++;
 	}
+//	letter = 0 ;
+//	i = 0;
+//	while (i < info.min_square)
+//			{
+//				write(1,info.tab[i],info.min_square);
+//				write(1,"\n", 1);
+//				i++;
+//			}
+//	write(1,"\n", 1);
 }
 
 int		ft_put_tetri(t_info info, t_tetri *position, int y, int x)
