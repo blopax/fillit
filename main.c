@@ -6,7 +6,7 @@
 /*   By: nvergnac <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 19:00:34 by nvergnac          #+#    #+#             */
-/*   Updated: 2017/11/27 15:26:16 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:42:55 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void		ft_get_next_lst(t_tetri *first, t_tetri *index, char letter)
 	}
 }
 
-int			ft_write_error(void)
+t_tetri		*ft_write_error(void)
 {
 	write(1, "error\n", 6);
 	return (0);
@@ -57,7 +57,7 @@ t_tetri		*ft_treatment(int fd)
 	{
 		buf[ret] = '\0';
 		if (letter > 'Z' || ft_str_check(buf) == 1)
-			ft_write_error();
+			return (ft_write_error());
 		index = ft_fill_struct(buf, letter);
 		if (letter == 'A')
 			first = index;
@@ -66,7 +66,7 @@ t_tetri		*ft_treatment(int fd)
 		letter++;
 	}
 	if (buf[20] != 0 || letter > 'Z')
-		ft_write_error();
+		return (ft_write_error());
 	return (first);
 }
 

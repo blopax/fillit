@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/24 13:57:36 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/27 15:30:49 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:52:24 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@
 # include <unistd.h>
 # define IT info.tab
 # define ITM info.min_square
-# define FMin first->min_x
-# define FMax first->max_x
+# define FMIN first->min_x
+# define FMAX first->max_x
 
 typedef struct		s_info
 {
@@ -45,7 +45,8 @@ int					ft_solver(t_tetri *lst);
 int					ft_int_strlen(char *s);
 char				**ft_redim_info_table(t_info info);
 int					ft_no_zero_in_tab(t_info info);
-void				ft_remove_tetr_from_table(t_info info, t_tetri *first, char letter, int k);
+void				ft_remove_tetr_from_table(t_info info, t_tetri *first,
+		char letter, int k);
 int					ft_nb_tetri(t_tetri *first);
 int					ft_min_square(t_info info);
 int					ft_put_tetri(t_info info, t_tetri *position, int y, int x);

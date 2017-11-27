@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/22 15:40:59 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/27 15:30:47 by nvergnac         ###   ########.fr       */
+/*   Updated: 2017/11/27 15:51:44 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,11 @@ void	ft_free_tab(t_info info)
 	free(info.tab);
 }
 
-t_tetri	ft_getnext_letter(t_tetri *first, char letter)
+t_tetri	*ft_getnext_letter(t_tetri *first, char letter)
 {
 	while (first->letter != letter)
 		first = first->next;
-	return (*first);
+	return (first);
 }
 
 int		ft_fill_size_tab(t_info info, t_tetri *first, char letter, int k)
@@ -37,7 +37,7 @@ int		ft_fill_size_tab(t_info info, t_tetri *first, char letter, int k)
 	int		y;
 	int		x;
 
-	*first = ft_getnext_letter(first, letter);
+	first = ft_getnext_letter(first, letter);
 	y = k / info.min_square;
 	while (y < info.min_square)
 	{
@@ -48,7 +48,7 @@ int		ft_fill_size_tab(t_info info, t_tetri *first, char letter, int k)
 				x = k % info.min_square;
 			while (x < info.min_square)
 			{
-				if (IT[y][x] == '.' && x + FMin >= 0 && x + FMax < ITM)
+				if (IT[y][x] == '.' && x + FMIN >= 0 && x + FMAX < ITM)
 				{
 					if (ft_put_tetri(info, first, y, x) == 1)
 						return (y * info.min_square + x);
