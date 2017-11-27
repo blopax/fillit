@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "header.h"
-#include "libft/libft.h"
 
 static int	ft_adjacent_count(char *s, int i, int size)
 {

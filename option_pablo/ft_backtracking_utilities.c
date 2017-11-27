@@ -53,16 +53,7 @@ void	ft_remove_tetr_from_table(t_info info, char letter)
 {
 	int		j;
 	int		k;
-//	int		i;
 
-//i = 0;
-//	while (i < info.min_square)
-//			{
-//				write(1,info.tab[i],info.min_square);
-//				write(1,"\n", 1);
-//				i++;
-//			}
-//	write(1,"\n", 1);
 	j = 0;
 	while (j < info.min_square)
 	{
@@ -75,15 +66,6 @@ void	ft_remove_tetr_from_table(t_info info, char letter)
 		}
 		j++;
 	}
-//	letter = 0 ;
-//	i = 0;
-//	while (i < info.min_square)
-//			{
-//				write(1,info.tab[i],info.min_square);
-//				write(1,"\n", 1);
-//				i++;
-//			}
-//	write(1,"\n", 1);
 }
 
 int		ft_put_tetri(t_info info, t_tetri *position, int y, int x)
@@ -92,7 +74,6 @@ int		ft_put_tetri(t_info info, t_tetri *position, int y, int x)
 	int		case_index_abs;
 	int		case_index_ord;
 
-	//printf("X :\t%d\tY :\t%d\n\n",x,y);
 	case_index = 1;
 	while (case_index <= 3)
 	{
@@ -110,7 +91,6 @@ int		ft_put_tetri(t_info info, t_tetri *position, int y, int x)
 	{
 		case_index_abs = x + position->coord[case_index][0];
 		case_index_ord = y + position->coord[case_index][1];
-//		printf("i :\t%d\tABS :\t%d\tORD :\t%d\tLETTER : %c\n\n",y, case_index_abs, case_index_ord, position->letter);
 		info.tab[case_index_ord][case_index_abs] = position->letter;
 		case_index++;
 	}
