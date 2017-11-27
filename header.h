@@ -42,7 +42,7 @@ int					ft_solver(t_tetri *lst);
 int					ft_int_strlen(char *s);
 char				**ft_redim_info_table(t_info info);
 int					ft_no_zero_in_tab(t_info info);
-void				ft_remove_tetr_from_table(t_info info, char letter);
+void				ft_remove_tetr_from_table(t_info info, t_tetri *first, char letter, int k);
 int					ft_nb_tetri(t_tetri *first);
 int					ft_min_square(t_info info);
 int					ft_put_tetri(t_info info, t_tetri *position, int y, int x);

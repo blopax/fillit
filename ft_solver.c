@@ -59,22 +59,10 @@ int		ft_size_solver(t_info info, t_tetri *first, char letter, int k)
 		{
 			if (ft_size_solver(info, first, letter + 1, 0) == 1)
 				return (1);
-			ft_remove_tetr_from_table(info, letter);
+			ft_remove_tetr_from_table(info, first, letter, j);
 			if (ft_size_solver(info, first, letter, j + 1) == 1)
 				return (1);
-
-/*				write(1,"Apercu de tab apres REMOVE\n", 27);
-				i = 0;
-			  while (i < info.min_square)
-			  {
-			  write(1,info.tab[i],info.min_square);
-			  write(1,"\n", 1);
-			  i++;
-			  }
-			  write(1,"\n", 1);
-*/
 		}
-		ft_remove_tetr_from_table(info, letter);
 	}
 	return (0);
 }

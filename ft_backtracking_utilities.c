@@ -49,22 +49,25 @@ int		ft_no_zero_in_tab(t_info info)
 	return (0);
 }
 
-void	ft_remove_tetr_from_table(t_info info, char letter)
+void	ft_remove_tetr_from_table(t_info info, t_tetri *first, char letter, int k)
 {
-	int		j;
-	int		k;
+	int		x;
+	int		y;
+	int		case_index;
+	int		case_index_abs;
+	int		case_index_ord;
 
-	j = 0;
-	while (j < info.min_square)
+	y = k / info.min_square;
+	x = k % info.min_square;
+	while (first->letter != letter)
+		first = first->next;
+	case_index = 0;
+	while (case_index <= 3)
 	{
-		k = 0;
-		while (k < info.min_square)
-		{
-			if (info.tab[j][k] == letter)
-				info.tab[j][k] = '.';
-			k++;
-		}
-		j++;
+		case_index_abs = x + first->coord[case_index][0];
+		case_index_ord = y + first->coord[case_index][1];
+		info.tab[case_index_ord][case_index_abs] = '.';
+		case_index++;
 	}
 }
 
