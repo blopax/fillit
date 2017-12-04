@@ -6,7 +6,7 @@
 /*   By: pclement <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/11/21 15:25:39 by pclement          #+#    #+#             */
-/*   Updated: 2017/11/27 15:39:57 by pclement         ###   ########.fr       */
+/*   Updated: 2017/12/01 19:30:29 by nvergnac         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ static int	ft_adjacent_count(char *s, int i, int size)
 	int		adjacent_count;
 
 	adjacent_count = 0;
-	if (i > 1 && s[i - 1] == '#')
+	if (i >= 1 && s[i - 1] == '#')
 		adjacent_count++;
-	if (i > 5 && s[i - 5] == '#')
+	if (i >= 5 && s[i - 5] == '#')
 		adjacent_count++;
 	if (i + 1 < size && s[i + 1] == '#')
 		adjacent_count++;
